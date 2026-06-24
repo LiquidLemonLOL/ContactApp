@@ -42,7 +42,7 @@ public class ContactAppTest {
     @DisplayName("Unsuccessful add - bad phone number")
     void testUnsuccessfulAddPhoneNumber() {
         String badNumber = "zero837sevendialdot2817";
-        //Add a invalid contact
+        //Add an invalid contact
         IllegalArgumentException e =
                 assertThrows(IllegalArgumentException.class, () -> validation.addContact("John", "Doe", "good@email.com", badNumber, "Street 1"));
         assertEquals(("Phone number " + badNumber + " is not valid."), e.getMessage());
@@ -51,17 +51,15 @@ public class ContactAppTest {
     @Test
     @DisplayName("Unsuccessful add - null name")
     void testUnsuccessfulAddName() {
-        String badName = null;
-        //Add a invalid contact
-        assertThrows(IllegalArgumentException.class, () -> validation.addContact(badName, "Doe", "good@email.com", "0705394817", "Street 1"));
+        //Add an invalid contact
+        assertThrows(IllegalArgumentException.class, () -> validation.addContact(null, "Doe", "good@email.com", "0705394817", "Street 1"));
     }
 
     @Test
     @DisplayName("Unsuccessful add - null address")
     void testUnsuccessfulAddaAddress() {
-        String badAddress = null;
         //Add an invalid contact
-        assertThrows(IllegalArgumentException.class, () -> validation.addContact("John", "Doe", "good@email.com", "0705394817", badAddress));
+        assertThrows(IllegalArgumentException.class, () -> validation.addContact("John", "Doe", "good@email.com", "0705394817", null));
     }
 
     @Test
@@ -140,9 +138,8 @@ public class ContactAppTest {
     void testUnsuccessfulSearchBadPrompt() {
         Contact contact = validation.addContact("John", "Doe", "good@email.com", "0705394817", "Street 1");
         assertTrue(data.getContactById(contact.getId()).isPresent());
-        String searchPrompt = null;
         IllegalArgumentException e =
-                assertThrows(IllegalArgumentException.class, () -> validation.searchContacts(searchPrompt));
+                assertThrows(IllegalArgumentException.class, () -> validation.searchContacts(null));
         assertEquals(("Search prompt cannot be empty or null."), e.getMessage());
     }
 
