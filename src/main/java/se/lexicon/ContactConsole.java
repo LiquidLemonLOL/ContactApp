@@ -137,10 +137,10 @@ public class ContactConsole {
             validation.getContact(id).ifPresentOrElse(
                     contact -> {
                         String userConfirm = IO.readln("Are you sure you want to delete "
-                                + contact.getFullName() + " with ID" + id + " from the system? (yes/no)");
+                                + contact.getFullName() + " with ID " + id + " from the system? (yes/no) ");
                         if (userConfirm.equalsIgnoreCase("yes")) {
                             validation.deleteContact(id);
-                            IO.println("Deleted " + contact.getFullName() + "with ID : " + id + ".");
+                            IO.println("Deleted " + contact.getFullName() + " with ID: " + id + ".");
                         } else {
                             IO.println("Deletion canceled.");
                         }

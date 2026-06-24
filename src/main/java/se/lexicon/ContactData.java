@@ -8,7 +8,7 @@ import java.util.*;
 public class ContactData {
 
 
-        //HashMap of all contacts, seperated through UUID
+        //HashMap of all contacts, separated through UUID
         private final Map<UUID, Contact> contacts = new HashMap<>();
 
         public void save(Contact contact) {
