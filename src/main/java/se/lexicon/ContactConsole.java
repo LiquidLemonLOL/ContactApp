@@ -134,7 +134,7 @@ public class ContactConsole {
             UUID id = promptUUID();
             if (id == null) { return; }
 
-            validation.getContact(id).ifPresentOrElse(
+            validation.getContact(id).ifPresent(
                     contact -> {
                         String userConfirm = IO.readln("Are you sure you want to delete "
                                 + contact.getFullName() + " with ID " + id + " from the system? (yes/no) ");
@@ -144,7 +144,7 @@ public class ContactConsole {
                         } else {
                             IO.println("Deletion canceled.");
                         }
-                    }, () -> IO.println("No contact with ID: " + id + " found."));
+                    });
         }
 
         //helper UUID method
