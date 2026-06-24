@@ -11,6 +11,17 @@ public class ContactData {
         //HashMap of all contacts, separated through UUID
         private final Map<UUID, Contact> contacts = new HashMap<>();
 
+        //gets the HashMap for csvStorage
+        public Map<UUID, Contact> getMap() {
+            return contacts;
+        }
+
+        //Clears HashMap and populates with saved HashMap
+        public void loadFrom(Map<UUID, Contact> loaded) {
+            contacts.clear();
+            contacts.putAll(loaded);
+        }
+
         public void save(Contact contact) {
             contacts.put(contact.getId(), contact);
         }
